@@ -3,8 +3,7 @@
  * @date 4/12/2024 - 2:26:59 PM
  */
 function showNext() {
-  carouselItem[activeIndex].classList.remove("active");
-  thumbElem[activeIndex].classList.remove("active");
+  removeActive();
 
 
   if (activeIndex < images.length - 1) {
@@ -14,8 +13,7 @@ function showNext() {
 
   }
 
-  thumbElem[activeIndex].classList.add("active");
-  carouselItem[activeIndex].classList.add("active");
+  addActive();
 }
 
 /**
@@ -23,8 +21,7 @@ function showNext() {
  * @date 4/12/2024 - 2:27:33 PM
  */
 function showPrev() {
-  carouselItem[activeIndex].classList.remove("active");
-  thumbElem[activeIndex].classList.remove("active");
+  removeActive();
 
 
   if (activeIndex > 0) {
@@ -35,8 +32,7 @@ function showPrev() {
 
   }
 
-  thumbElem[activeIndex].classList.add("active");
-  carouselItem[activeIndex].classList.add("active");
+  addActive();
 }
 
 
@@ -69,12 +65,31 @@ function invertOrder() {
     
     let order;
     if (orderCount === 0) {
-        order = showPrev;
+        order = showNext;
         orderCount++;
     } else {
-        order = showNext
+        order = showPrev
         orderCount--;
 
     }
     return order;
+}
+
+
+/**
+ * Remove active class from carousel item and thumb
+ * @date 4/12/2024 - 4:21:59 PM
+ */
+function removeActive(){
+    carouselItem[activeIndex].classList.remove("active");
+    thumbElem[activeIndex].classList.remove("active");
+}
+
+/**
+ * Add active class from carousel item and thumb
+ * @date 4/12/2024 - 4:22:32 PM
+ */
+function addActive() {
+    carouselItem[activeIndex].classList.add("active");
+    thumbElem[activeIndex].classList.add("active");
 }

@@ -68,6 +68,8 @@ let activeIndex = 0;
 carouselItem[activeIndex].classList.add("active");
 
 
+
+
 //Adding event listener to next btn
 const nextBtn = document
   .querySelector(".my-next")
@@ -82,13 +84,15 @@ const playBtn = document.getElementById("my-stop-button").addEventListener("clic
 const invertOrderBtn = document.getElementById("my-order-button").addEventListener("click", invertOrder)
 
 const thumbElem = document.querySelectorAll(".my-thumbnail");
-
-// thumbElem.forEach((curThumb) => {
-//   curThumb.addEventListener("click", function(){
-    
-//   })
-// })
+thumbElem[activeIndex].classList.add("active")
 
 
-console.log(carouselItem);
+thumbElem.forEach((curThumb,index)=> {
+  curThumb.addEventListener("click", ()=>{
+    removeActive();
+    activeIndex = index;
+    addActive();
+  })
+})
+
 
