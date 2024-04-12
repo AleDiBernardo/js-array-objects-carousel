@@ -1,3 +1,4 @@
+const carouselElem = document.querySelector(".my-carousel-images");
 const images = [
   {
     image: "img/01.webp",
@@ -25,3 +26,43 @@ const images = [
     text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
   },
 ];
+
+
+//Adding carousel elements to DOM
+images.forEach((curObject) => {
+
+  carouselElem.innerHTML += `
+    <div class="my-carousel-item" carousel-item="1">
+      <img
+        class="img-fluid"
+        src="${curObject.image}"
+        alt="${curObject.title} picture"
+      />
+      <div class="item-description px-3">
+        <h2>${curObject.title}</h2>
+        <p>
+          ${curObject.text}
+        </p>
+      </div>
+    </div>
+  `;
+});
+
+//Select all carousel items
+const carouselItem = document.querySelectorAll(".my-carousel-item");
+let activeIndex = 0;
+
+carouselItem[activeIndex].classList.add("active");
+
+
+//Adding event listener to next btn
+const nextBtn = document
+  .querySelector(".my-next")
+  .addEventListener("click", showNext);
+
+//Adding event listener to previous btn
+const prevBtn = document
+  .querySelector(".my-previous")
+  .addEventListener("click", showPrev);
+
+
