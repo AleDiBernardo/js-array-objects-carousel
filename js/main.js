@@ -1,4 +1,9 @@
 const carouselElem = document.querySelector(".my-carousel-images");
+const thumbContainer = document.querySelector(".my-thumbnails");
+
+let clicked = 0, orderCount = 0;
+let startPlay;
+
 const images = [
   {
     image: "img/01.webp",
@@ -46,6 +51,14 @@ images.forEach((curObject) => {
       </div>
     </div>
   `;
+
+  thumbContainer.innerHTML += `
+    <img
+      class="img-fluid my-thumbnail"
+      src="${curObject.image}"
+      alt="${curObject.text} picture"
+    />
+  `
 });
 
 //Select all carousel items
@@ -65,4 +78,17 @@ const prevBtn = document
   .querySelector(".my-previous")
   .addEventListener("click", showPrev);
 
+const playBtn = document.getElementById("my-stop-button").addEventListener("click", autoPlay)
+const invertOrderBtn = document.getElementById("my-order-button").addEventListener("click", invertOrder)
+
+const thumbElem = document.querySelectorAll(".my-thumbnail");
+
+// thumbElem.forEach((curThumb) => {
+//   curThumb.addEventListener("click", function(){
+    
+//   })
+// })
+
+
+console.log(carouselItem);
 
